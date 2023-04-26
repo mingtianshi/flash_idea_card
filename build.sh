@@ -6,10 +6,8 @@ if [ $? -eq 0 ]; then
   else
     DOCKER_NAMESPACE_HEAD_STR=""
   fi
-  if [ ${DOCKER_IMAGE_NAME} ]; then
-      DOCKER_IMAGE_NAME_STR=${DOCKER_IMAGE_NAME}
-  else
-      DOCKER_IMAGE_NAME_STR="latest"
+  if [ ! ${DOCKER_IMAGE_NAME} ]; then
+      DOCKER_IMAGE_NAME="latest"
   fi
   cd ./fic-gateway
   docker build -t "${DOCKER_NAMESPACE_HEAD_STR}fic-gateway:${DOCKER_IMAGE_NAME}" .
